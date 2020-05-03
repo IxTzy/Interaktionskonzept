@@ -32,6 +32,4 @@ Use Case Diagram
 
 ![useCasePicutre](/Doku/Diagramme/usecase_svg.svg)
 
-Kommunikation zwischen Broker und Datenverwaltungsanwendung
-
 
