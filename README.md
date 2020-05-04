@@ -32,7 +32,7 @@ MQTT TBD<br/>
 
 ![useCasePicutre](/Doku/Diagramme/usecase_svg.svg)
 
-### Sequnce Diagram
+### Sequence Diagram
 ![SequnceDiagram](/Doku/Diagramme/sequence_svg.svg)
 
 
