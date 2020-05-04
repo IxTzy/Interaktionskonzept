@@ -30,6 +30,9 @@ MQTT TBD<br/>
 ## Diagramme
 Use Case Diagram
 
+![useCasePicutre](/Doku/Diagramme/usecase_svg.svg)
 
+Sequnce Diagram
+![SequnceDiagram](/Doku/Diagramme/sequence_svg.svg)
 
 
