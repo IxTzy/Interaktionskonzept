@@ -16,20 +16,25 @@ HospitalList = []
 def on_connect(client, userdata, flags, rc):
     # Abonnieren des Topics (Hier die jeweiligen Topics einfügen die vorgegeben sind)
     client.subscribe('/hshl/ambulances/')
-    print("subscribed to the ambulances topic")
+    print("subscribed to the ambulances topic!")
     client.subscribe('/hshl/firefighters/')
-    print("subscribed to the firefighters topic")
+    print("subscribed to the firefighters topic!")
     client.subscribe('/hshl/polices/')
-    print("subscribed to the polices topic")
+    print("subscribed to the polices topic!")
     client.subscribe('/hshl/hospitals/')
-    print("subscribed to the hospitals topic")
+    print("subscribed to the hospitals topic!")
     client.subscribe('/hshl/users/')
-    print("subscribed to the users topic")
+    print("subscribed to the users topic!")
 
 
-def sup(x):
-    client.subscribe(x)
-    print("subbed to: ", x)
+def sup(str, id, state):
+    if state == True:
+        client.subscribe(str + id)
+        print("subbed to: ", str + id)
+        client.publish(
+            str, id + ": Successfully added! Channel for further Communication is: " + str + id)
+    else:
+        client.publish(str, id + ": Already exists! Change the Id!: ")
 
 
 def on_message(client, userdata, message):
@@ -43,23 +48,24 @@ def on_message(client, userdata, message):
 
     if split[3][0] == "a":
         if checkNadd(split[3], AmbulanceList, Ambulance, split, locationSplit) == True:
-            sup("/hshl/ambulances/" + split[3])
-
+            sup("/hshl/ambulances/", split[3], True)
+        else:
+            sup("/hshl/ambulances/", split[3], False)
     elif split[3][0] == "f":
         if checkNadd(split[3], FirefighterList, Firefighter, split, locationSplit) == True:
-            sup("/hshl/firefighters/" + split[3])
+            sup("/hshl/firefighters/", split[3])
 
     elif split[3][0] == "p":
         if checkNadd(split[3], PoliceList, Police, split, locationSplit) == True:
-            sup("/hshl/polices/" + split[3])
+            sup("/hshl/polices/", split[3])
 
     elif split[3][0] == "h":
         if checkNadd(split[3], HospitalList, Hospital, split, locationSplit) == True:
-            sup("/hshl/hospitals/" + split[3])
+            sup("/hshl/hospitals/", split[3])
 
     elif split[3][0] == "u":
         if checkNadd(split[3], userCarList, userCar, split, locationSplit) == True:
-            sup("/hshl/users/" + split[3])
+            sup("/hshl/users/", split[3])
 
             # Hier die Verarbeitung der Nachricht einfügen
 
@@ -75,4 +81,3 @@ client.connect(BROKER_ADDRESS, port=20614)  # Verbindung zum Broker aufbauen
 
 print("Connected to MQTT Broker: " + BROKER_ADDRESS)
 client.loop_forever()  # Endlosschleife um neue Nachrichten empfangen zu können
-print("221")
