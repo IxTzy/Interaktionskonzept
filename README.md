@@ -1,3 +1,10 @@
+# Implementierung
+[Release 0.1][rel01] 
+<br>
+[Release 0.2][rel02]
+<br>
+[Release 0.3][rel03]
+
 # Interaktionskonzept Seminar
 Das Ziel des Projektes ist es die entstehenden Anfragen mit den jeweiligen Daten situationsbedingt zu bearbeiten. Dazu soll es definierte Schnittstellen für verschiedene Services geben die über MQTT kommunizieren.
 
@@ -37,13 +44,8 @@ MQTT TBD<br/>
 ### Sequence Diagram
 ![SequnceDiagram](/Doku/Diagramme/sequence_svg.svg)
 
-# Implementierung
-[Release 0.1][rel01] 
-<br>
-[Release 0.2][rel02]
-
 
 [rel01]: https://github.com/IxTzy/Interaktionskonzept/tree/master/Implementierung/Release%200.1
 [rel02]: https://github.com/IxTzy/Interaktionskonzept/tree/master/Implementierung/Release%200.2
-
+[rel03]: https://github.com/IxTzy/Interaktionskonzept/tree/master/Implementierung/Release%200.3
 
