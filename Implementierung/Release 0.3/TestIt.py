@@ -32,11 +32,10 @@ def sendData():
 
     topic = "/hshl/users/"  # Das Topic in dem gesendet werden soll
     # Die Daten die gesendet werden sollen
-    payLoad = "klaus 22.2296756,28.0122287 heart_attack abc5"
+    payLoad = "klaus 22.2296756,28.0122287 accident abc5"
     print("sendet")
     client.publish(topic, payLoad)
 
-    stressTest(1000)
 
 # Event, dass beim Verbindungsaufbau aufgerufen wird
 

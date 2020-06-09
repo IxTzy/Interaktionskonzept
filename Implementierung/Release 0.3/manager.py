@@ -256,7 +256,6 @@ def alarm(alarmList, userReason, userLocation):
         except Exception as e:
             print(e)
             raise
-    print("im free")
     pass
 
 
