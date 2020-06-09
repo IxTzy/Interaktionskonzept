@@ -1,5 +1,5 @@
 # Release 0.3
-Es können Feuerwehr, Polizei, Krankenwägen, UserCars und Krankenhäuser registriert werden, in dem eine Nachricht an das jeweilige Topik gesendet wird. Die Nachricht muss dabei wie folgt für Feuerwehr, Polizei und Krankenwägen formatiert werden:
+Es können Feuerwehr, Polizei, Krankenwagen, UserCars und Krankenhäuser registriert werden, in dem eine Nachricht an das jeweilige Topik gesendet wird. Die Nachricht muss dabei wie folgt für Feuerwehr, Polizei und Krankenwägen formatiert werden:
 ```python
 "driverName Lat,Long isFree Id"
 ```
