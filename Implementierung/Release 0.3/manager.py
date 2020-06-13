@@ -248,9 +248,16 @@ def alarm(alarmList, userReason, userLocation):
     for data in alarmData:
         try:
             topic = "/hshl/" + data[2] + "/" + data[1]
-            message = "User reason: " + userReason + ". User Location: " + \
+            DebugMessage = "User reason: " + userReason + ". User Location: " + \
                 str(userLocation) + ". Distance: " + str(data[0])
-            print("Send: ", message, " to: ", topic)
+            message = userReason + " " + \
+                str(userLocation[0]) + "," + \
+                str(userLocation[1]) + " " + str(data[0])
+
+            # The Message the Entitys Recive should look someting like this
+            # accident 22.2296756,28.0122287 4221.03859127204
+            # There is some extra work to do for the Hospital Handling
+            print("Send: ", DebugMessage, " to: ", topic)
             NEWclient.publish(topic, message)
             pass
         except Exception as e:
