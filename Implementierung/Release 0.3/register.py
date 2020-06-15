@@ -55,12 +55,14 @@ def on_connect(client, userdata, flags, rc):
 
 def sub(str, id, state):
     if state == True:
-        client.subscribe(str + id)
-        print("Subscribed to: " + str + id)
+        client.subscribe(str + id, 2)
+        topic = str + id
+        print("Subscribed to: " + topic)
+
         client.publish(
-            str, id + ": Successfully added! Channel for further Communication is: " + str + id)
+            str, ": Successfully added! Channel for further Communication is: " + topic)
     else:
-        client.publish(str, id + ": Already exists! Change the Id!: ")
+        client.publish(str, id + ": Already exists! Change the Id!")
 
 
 def deciderData():
