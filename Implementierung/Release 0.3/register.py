@@ -91,7 +91,7 @@ def on_message(client, userdata, message):
         split[5] = split[5].split(",")
 
 ###########################REGISTRATION PROCESS#######################################
-
+    print("asajsdjasd:" + split[3])
     if message.topic.split("/")[3] == "":
         # registration of new entitys
         if message.topic == "/hshl/ambulances/":
@@ -125,7 +125,6 @@ def on_message(client, userdata, message):
                 # start the decider in the event that there is an accident before registration
                 decider(userReason=split[2], userLocation=locationSplit, FirefighterList=FirefighterList,
                         AmbulanceList=AmbulanceList, PoliceList=PoliceList, HospitalList=HospitalList)
-
             else:
                 sub("/hshl/users/", split[3], False)
 
@@ -137,6 +136,7 @@ def on_message(client, userdata, message):
                        locationSplit, allEntityList, allEntityList)
 
         # entity specific handling
+
 
         # Dont change anything from here!!
 BROKER_ADDRESS = "mr2mbqbl71a4vf.messaging.solace.cloud"  # Adresse des MQTT Brokers
