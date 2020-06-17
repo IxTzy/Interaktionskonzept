@@ -22,6 +22,11 @@ Für UserCars ergibt sich folgende Formatierung:
 | specialists | Liste an spezialisten |
 | reason | Aktueller zustand |
 
+Zulässige Reasons sind: 
+```python
+heart_attack, accident, accident_fire, accident_oil, light_accident, hard_accident, police, ambulance, hospital, None
+```
+
 Beispiele für Krankenhaus und UserCar:
 
 ```python
