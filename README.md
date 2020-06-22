@@ -6,6 +6,13 @@
 [Release 0.3][rel03]
 <br>
 [Release 0.4][rel04]
+<br>
+[Registration Process Diagramm][rp]
+<br>
+[User Reason Diagramm][ur]
+<br>
+[Requirements][req]
+<br>
 
 # Interaktionskonzept Seminar
 Das Ziel des Projektes ist es die entstehenden Anfragen mit den jeweiligen Daten situationsbedingt zu bearbeiten. Dazu soll es definierte Schnittstellen für verschiedene Services geben die über MQTT kommunizieren.
@@ -34,9 +41,6 @@ NFREQ00 - Die Kommunikation muss über ein Protokoll stattfinden <br/>
 ## Non Functional Requirements EN
 NFREQ00 - Communication must take place over a protocol <br/>
 
-## Protokoll
-MQTT TBD<br/>
-
 
 ## Diagramme
 ### Use Case Diagram
@@ -51,3 +55,6 @@ MQTT TBD<br/>
 [rel02]: https://github.com/IxTzy/Interaktionskonzept/tree/master/Implementierung/Release%200.2
 [rel03]: https://github.com/IxTzy/Interaktionskonzept/tree/master/Implementierung/Release%200.3
 [rel04]: https://github.com/IxTzy/Interaktionskonzept/tree/master/Implementierung/Release%200.4
+[rp]: https://github.com/IxTzy/Interaktionskonzept/blob/master/Doku/Diagramme/RegistrationProcess.pdf
+[ur]: https://github.com/IxTzy/Interaktionskonzept/blob/master/Doku/Diagramme/UserReason.pdf
+[req]: https://github.com/IxTzy/Interaktionskonzept/blob/master/Doku/Requirements/README.md
