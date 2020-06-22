@@ -56,7 +56,7 @@ def checkNadd(id, list, obj, split, location, kind):
         return True
 
 
-def compareNupdate(message, data, location, List, allEntityList):
+def compareNupdate(message, data, location, List, allEntityList, id):
     topic = message[2]
     id = message[3]
 
@@ -192,7 +192,7 @@ def decider(userReason=None, userLocation=None, FirefighterList=None, AmbulanceL
                                AmbulanceList=AmbulanceList,
                                HospitalList=HospitalList,
                                specialist="HeartDoc")
-        alarm(alarmList, userReason, userLocation)
+        alarm(alarmList, userReason, userLocation, id)
 
     elif userReason == "accident":
         alarmList = getClosest(userLocation=userLocation,
@@ -201,7 +201,7 @@ def decider(userReason=None, userLocation=None, FirefighterList=None, AmbulanceL
                                PoliceList=PoliceList,
                                HospitalList=HospitalList,
                                specialist="AccidentDoc")
-        alarm(alarmList, userReason, userLocation)
+        alarm(alarmList, userReason, userLocation, id)
 
     elif userReason == "accident_fire":
         alarmList = getClosest(userLocation=userLocation,
@@ -210,17 +210,17 @@ def decider(userReason=None, userLocation=None, FirefighterList=None, AmbulanceL
                                PoliceList=PoliceList,
                                HospitalList=HospitalList,
                                specialist="AccidentDoc")
-        alarm(alarmList, userReason, userLocation)
+        alarm(alarmList, userReason, userLocation, id)
 
     elif userReason == "accident_oil":
         alarmList = getClosest(userLocation=userLocation,
                                FirefighterList=FirefighterList)
-        alarm(alarmList, userReason, userLocation)
+        alarm(alarmList, userReason, userLocation, id)
 
     elif userReason == "light_accident":
         alarmList = getClosest(userLocation=userLocation,
                                PoliceList=PoliceList)
-        alarm(alarmList, userReason, userLocation)
+        alarm(alarmList, userReason, userLocation, id)
 
     elif userReason == "hard_accident":
         alarmList = getClosest(userLocation=userLocation,
@@ -229,32 +229,32 @@ def decider(userReason=None, userLocation=None, FirefighterList=None, AmbulanceL
                                PoliceList=PoliceList,
                                HospitalList=HospitalList,
                                specialist="AccidentDoc")
-        alarm(alarmList, userReason, userLocation)
+        alarm(alarmList, userReason, userLocation, id)
 
     elif userReason == "police":
         alarmList = getClosest(userLocation=userLocation,
                                PoliceList=PoliceList)
-        alarm(alarmList, userReason, userLocation)
+        alarm(alarmList, userReason, userLocation, id)
 
     elif userReason == "ambulance":
         alarmList = getClosest(userLocation=userLocation,
                                AmbulanceList=AmbulanceList,
                                HospitalList=HospitalList,
                                specialist="AccidentDoc")
-        alarm(alarmList, userReason, userLocation)
+        alarm(alarmList, userReason, userLocation, id)
 
     elif userReason == "hospital":
         alarmList = getClosest(userLocation=userLocation,
                                HospitalList=HospitalList,
                                specialist="someDoc")
-        alarm(alarmList, userReason, userLocation)
+        alarm(alarmList, userReason, userLocation, id)
 
     elif userReason == "None":
         pass
     pass
 
 
-def alarm(alarmList, userReason, userLocation):
+def alarm(alarmList, userReason, userLocation, userId):
     # the alarm actually alarms the entitys over MQTT
     # also it sets the isFree value of an alarmed entity to Flase
     # alarmList -> [Distance, EntityID, kindOfEntity]
@@ -275,21 +275,26 @@ def alarm(alarmList, userReason, userLocation):
                 "location": userLocation,
                 "distance": data[0]
             }
-            print(message)
-
             # The Message the Entitys Recive should look someting like this
             # {
             # 'reasons': 'accident',
             # 'location': [51.3, 23.22],
             # 'distance': 889.4124848067089
             # }
-
-            print("Send: ", message, " to: ", topic)
+            # The NEWclient is only used to send infomartion to the entites.
             NEWclient.publish(topic, json.dumps(message))
+            print("Send: ", message, " to: ", topic)
             pass
         except Exception as e:
             print(e)
             raise
+
+    userTopic = "/hshl/users/" + str(userId)
+    UserMessage = {
+        "message": "Help is on the Way!"
+    }
+    NEWclient.publish(userTopic, json.dumps(UserMessage))
+    print("Send: ", UserMessage, " to: ", userTopic)
     pass
 
 

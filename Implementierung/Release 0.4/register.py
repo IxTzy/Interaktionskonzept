@@ -53,8 +53,8 @@ def on_connect(client, userdata, flags, rc):
 def sub(str, id, state):
     try:
         if state == True:
-            client.subscribe(str + id)
             topic = str + id
+            client.subscribe(topic)
             print("Subscribed to: " + topic)
 
             client.publish(
@@ -139,7 +139,7 @@ def on_message(client, userdata, message):
 ###########################UPDATE PROCESS#######################################
     else:
         compareNupdate(message.topic.split("/"), data,
-                       location, allEntityList, allEntityList)
+                       location, allEntityList, allEntityList, id)
 
 
         # entity specific handling
