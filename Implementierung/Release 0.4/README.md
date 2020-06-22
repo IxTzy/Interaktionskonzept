@@ -153,6 +153,27 @@ message = {
 ```
 Das Updaten anderer Entities funktioniert nach demselben Prinzip.
 
+## Zu erwartende Antowrt
+
+Wird eine Anfrage an den Server gestellt, die bearbeitet werde kann. Wird eine Antwort in diesem Format gesendet:
+
+```yaml
+message = {
+    'reasons': userReason,
+    'location': location,
+    'distance': distance
+}
+```
+
+Ein Beispiel wäre:
+
+```yaml
+message = {
+    'reasons': "accident",
+    'location': [51.3,23.22],
+    'distance': 889.4124848067089
+}
+```
 ## Changelog
     1. Verarbeitung der JSON Daten
     2. Kleinere Fixes
