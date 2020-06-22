@@ -155,7 +155,7 @@ Das Updaten anderer Entities funktioniert nach demselben Prinzip.
 
 ## Zu erwartende Antowrt
 
-Wird eine Anfrage an den Server gestellt, die bearbeitet werde kann. Wird eine Antwort in diesem Format gesendet:
+Wird eine Anfrage an den Server gestellt, die bearbeitet werden kann. Wird eine Antwort in diesem Format gesendet:
 
 ```yaml
 message = {
