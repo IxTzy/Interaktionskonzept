@@ -20,6 +20,7 @@ def sendData():
     client.publish(topic, json.dumps(call))
     print("sendet")
 
+
 ###########################CREATE FIREFIGHTER#######################################
     topic = "/hshl/firefighters/"  # Das Topic in dem gesendet werden soll
     # Die Daten die gesendet werden sollen
@@ -31,6 +32,7 @@ def sendData():
     }
     client.publish(topic, json.dumps(call))
     print("sendet")
+
 
 ###########################CREATE POLICE#######################################
     topic = "/hshl/polices/"  # Das Topic in dem gesendet werden soll
@@ -76,7 +78,7 @@ def sendData():
     call = {
         "driver_name": "Herrmann",
         "location": [51.3, 23.22],  # Array mit Koordinaten
-        "reasons": "accident",  # Array mit reasons
+        "reasons": "hard_accident",  # Array mit reasons
         "id": "car1"
     }
     client.publish(topic, json.dumps(call))
